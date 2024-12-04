@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half-Sized Ribbon Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+      #sponsors {
+            max-width: 1000px; /* Limit the page to a max width of 1000px */
+            margin: auto; /* Center the container */
+            min-height: 100vh;
+            padding: 35px;
+        }
+
+        .sponsorlogo {
+            --s: 200px;
+            
+            width: var(--s);
+            height: var(--s);
+            border-radius: 50%; /* Keep the element circular */
+            display: flex;
+            align-items: center; /* Center image vertically */
+            justify-content: center; /* Center image horizontally */
+            position: relative;
+            transition: box-shadow 0.3s;
+        }
+
+        /* Add a circular gradient shadow on hover */
+        .sponsorlogo:hover {
+            box-shadow: 0 0 0 5px #1A2F3F, 0 0 0 10px #4E91F0;
+            background: transparent;
+        }
+
+        .grid-item img {
+            max-width: 80%; /* Ensure image fits well within circle */
+            opacity: 0.8; /* Set slight opacity by default */
+            transition: opacity 0.3s, transform 0.3s ease;
+        }
+
+        /* Full opacity and slight scale on hover */
+        .grid-item a:hover img {
+            opacity: 1;
+            transform: scale(0.9);
+        }
+
+        #sponsors .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 35px;
+            justify-items: center;
+            text-align: center;
+        }
+
+        #sponsors .grid-item {
+            display: flex;
+            flex-direction: column; /* Stack the ribbon below the circle */
+            align-items: center;
+            width: 200px;
+            height: auto;
+            background-color: white;
+        }
+        .ribbon {
+            width: 100px; /* Halved width */
+            height: 30px; /* Halved height */
+            margin: 10px auto 0px;
+            position: relative;
+            color: #fff;
+            font: 14px/30px sans-serif; /* Halved font size and line height */
+            text-align: center;
+            text-transform: uppercase;
+            background: #3D79D0;
+
+            -webkit-animation: main 250ms;
+            -moz-animation: main 250ms;
+            -ms-animation: main 250ms;
+            animation: main 250ms;
+        }
+
+        .ribbon i {
+            position: absolute;
+        }
+
+        .ribbon i:first-child, .ribbon i:nth-child(2) {
+            position: absolute;
+            left: -10px;
+            bottom: -10px;
+            z-index: -1;
+            border: 10px solid transparent;
+            border-right-color: #043140;
+
+            -webkit-animation: edge 500ms;
+            -moz-animation: edge 500ms;
+            -ms-animation: edge 500ms;
+            animation: edge 500ms;
+        }
+
+        .ribbon i:nth-child(2) {
+            left: auto;
+            right: -10px;
+            border-right-color: transparent;
+            border-left-color: #043140;
+        }
+
+        .ribbon i:nth-child(3), .ribbon i:last-child {
+            width: 10px;
+            bottom: -10px;
+            left: -30px;
+            z-index: -2;
+            border: 15px solid #1D53C0;
+            border-left-color: transparent;
+
+            -webkit-animation: back 600ms;
+            -moz-animation: back 600ms;
+            -ms-animation: back 600ms;
+            animation: back 600ms;
+
+            -webkit-transform-origin: 100% 0;
+            -moz-transform-origin: 100% 0;
+            -ms-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+        }
+
+        .ribbon i:last-child {
+            bottom: -10px;
+            left: auto;
+            right: -30px;
+            border: 15px solid #1D53C0;
+            border-right-color: transparent;
+
+            -webkit-transform-origin: 0 0;
+            -moz-transform-origin: 0 0;
+            -ms-transform-origin: 0 0;
+            transform-origin: 0 0;
+        }
+
+        p {
+            text-align: center;
+            color: #aaa;
+        }
+
+        /* animations */
+
+        @-webkit-keyframes main {
+            0% { -webkit-transform: scaleX(0); }
+            100% { -webkit-transform: scaleX(1); }
+        }
+
+        @-webkit-keyframes edge {
+            0%, 50% { -webkit-transform: scaleY(0); }
+            100% { -webkit-transform: scaleY(1); }
+        }
+
+        @-webkit-keyframes back {
+            0%, 75% { -webkit-transform: scaleX(0); }
+            100% { -webkit-transform: scaleX(1); }
+        }
+
+        @-moz-keyframes main {
+            0% { -moz-transform: scaleX(0); }
+            100% { -moz-transform: scaleX(1); }
+        }
+
+        @-moz-keyframes edge {
+            0%, 50% { -moz-transform: scaleY(0); }
+            100% { -moz-transform: scaleY(1); }
+        }
+
+        @-moz-keyframes back {
+            0%, 75% { -moz-transform: scaleX(0); }
+            100% { -moz-transform: scaleX(1); }
+        }
+
+        @keyframes main {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+
+        @keyframes edge {
+            0%, 50% { transform: scaleY(0); }
+            100% { transform: scaleY(1); }
+        }
+
+        @keyframes back {
+            0%, 75% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+    </style>
+</head>
+<body>
+    <div id="sponsors" class="section">
+  <div class="grid-container">
+  
+   <a href="https://www.cengage.com" class="sponsorlogo">
+                    <img src="career/Cengage.d31e0653bdb531a15bda.png" width="150px">
+                </a>
+    <div class="ribbon">
+        Platinum
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+	
+		
+	</div>
+	</div>
+</body>
+</html>
